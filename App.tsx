@@ -1,21 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import "./global.css";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet } from "react-native";
+import { AuthStack } from "./navigation/AuthStack";
+import RootNavigator from "./navigation/RootNavigator";
 
-export default function App() {
+const App: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Text className='text-green-800 text-lg'>Open up App.tsx to start working on your app!</Text>
+    <NavigationContainer>
+      <RootNavigator/>
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
   );
-}
+};
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
