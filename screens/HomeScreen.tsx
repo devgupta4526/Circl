@@ -4,7 +4,7 @@ import React from 'react'
 const HomeScreen = () => {
   return (
     <View>
-      <Text>HomeScreen</Text>
+      <Text className='text-lg text-green-600'>HomeScreen</Text>
     </View>
   )
 }

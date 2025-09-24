@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import { useAuth } from "@clerk/clerk-expo";
+import { useAuth } from "@clerk/clerk-expo";
 import { View, ActivityIndicator } from "react-native";
 
 import SignInScreen from "../screens/SignInScreen";
@@ -23,9 +23,8 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function RootNavigator() {
-    // const { isLoaded, isSignedIn } = useAuth();
-const isLoaded = true;
-const isSignedIn = false;
+const { isLoaded, isSignedIn } = useAuth();
+console.log("Auth state - isLoaded:", isLoaded, "isSignedIn:", isSignedIn);
 
     // Show a loading screen while Clerk checks auth state
     if (!isLoaded) {
