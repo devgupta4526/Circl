@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({
-  sport: { type: String, required: true },
+  activity: { type: String, required: true },
   location: { type: String, required: true }, // was area
   date: { type: String, required: true },
   time: { type: String, required: true },

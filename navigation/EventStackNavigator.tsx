@@ -10,6 +10,7 @@ import EventDetailsSetupScreen from '../screens/EventDetailsSetupScreen'; // pre
 import ParticipantsScreen from '../screens/ParticipantsScreen';   // previously PlayersScreen
 import SlotScreen from '../screens/SlotScreen';                   // optional, for multi-slot events
 import ManageJoinsScreen from '../screens/ManageJoinsScreen';     // previously ManageRequests
+import EventInfoScreen from '../screens/EventInfoScreen';
 
 export type EventStackParamList = {
   EventsHome: undefined;
@@ -20,6 +21,7 @@ export type EventStackParamList = {
   Participants: { eventId: string };
   Slot?: { eventId: string };
   ManageJoins: { eventId: string };
+  EventInfo?: { eventId: string };
 };
 
 const Stack = createNativeStackNavigator<EventStackParamList>();
@@ -35,6 +37,7 @@ const EventStackNavigator = () => {
       <Stack.Screen name="Participants" component={ParticipantsScreen}/>
       <Stack.Screen name="Slot" component={SlotScreen}/>
       <Stack.Screen name="ManageJoins" component={ManageJoinsScreen}/>
+      <Stack.Screen name="EventInfo" component={EventInfoScreen} />
     </Stack.Navigator>
   );
 };

@@ -31,8 +31,9 @@ const userRoutes = require('./routes/user.routes');
 app.use('/api/users', userRoutes);
 
 
-const gameRoutes = require('./routes/game.routes');
-app.use('/api/games', gameRoutes);
+
+const eventRoutes = require('./routes/event.routes');
+app.use('/api/event', eventRoutes);
 
 const venueRoutes = require("./routes/venue.routes");
 app.use('/api/venues',venueRoutes);

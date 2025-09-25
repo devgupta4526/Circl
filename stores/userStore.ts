@@ -4,6 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 import axios from 'axios';
 
 interface User {
+    _id: string; 
     clerkId: string;
     email: string;
     firstName: string;
