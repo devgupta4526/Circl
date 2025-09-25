@@ -69,7 +69,7 @@ const CreateEventScreen = () => {
     }
 
     try {
-      const response = await axios.post("http://192.168.1.102:3001/api/event/create", {
+      const response = await axios.post("http://9.54.133.229:3001/api/event/create", {
         activity,
         location: taggedVenue.name,
         date,

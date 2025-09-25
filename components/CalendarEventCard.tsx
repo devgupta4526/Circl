@@ -46,7 +46,7 @@ const CalendarEventCard: React.FC<CalendarEventCardProps> = ({ event, onCancelRe
     setLoading(true);
     try {
       const response = await axios.post(
-        `http://192.168.1.8:3001/api/events/${event._id}/cancel-request`,
+        `http://9.54.133.229:3001/api/events/${event._id}/cancel-request`,
         { userId: user.id }
       );
       if (response.status === 200) {

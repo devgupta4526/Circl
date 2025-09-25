@@ -19,7 +19,7 @@ interface User {
 // Define fetchUser as a standalone function
 const fetchUser = async (clerkId: string, set: (state: Partial<UserStore>) => void) => {
     try {
-        const response = await axios.get(`http://192.168.1.8:3001/api/users/${clerkId}`);
+        const response = await axios.get(`http://9.54.133.229:3001/api/users/${clerkId}`);
         if (response.status === 200) {
             set({ user: response.data.user });
         }

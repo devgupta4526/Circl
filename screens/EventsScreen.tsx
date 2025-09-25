@@ -46,7 +46,7 @@ const EventsScreen: React.FC = () => {
   const fetchEvents = useCallback(async () => {
     setLoading(true);
     try {
-      let endpoint = 'http://192.168.1.8:3001/api/event';
+      let endpoint = 'http://9.54.133.229:3001/api/event';
       if (selectedCategory === 'Calendar') {
         endpoint += '/upcoming';
       } else {

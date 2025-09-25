@@ -36,7 +36,7 @@ const EventInfoScreen: React.FC = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await axios.get(`http://192.168.1.8:3001/api/event/${eventId}`);
+        const res = await axios.get(`http://9.54.133.229:3001/api/event/${eventId}`);
         setEvent(res.data);
       } catch (err) {
         console.error(err);
