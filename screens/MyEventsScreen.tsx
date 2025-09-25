@@ -26,7 +26,7 @@ const MyEventScreen = () => {
   useEffect(() => {
     const fetchVenues = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/venues');
+        const response = await axios.get('http://9.54.133.229:3001/api/venues');
         setVenues(response.data);
       } catch (error) {
         console.error('Failed to fetch venues:', error);

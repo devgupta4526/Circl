@@ -17,9 +17,11 @@ const ProfileDetailScreen: React.FC = () => {
               className="w-16 h-16 rounded-full"
             />
             <View>
-              <Text className="text-xl font-semibold">{user?.firstName}</Text>
+              <Text className="text-xl font-semibold">
+                {user?.firstName} {user?.lastName || ""}
+              </Text>
               <Text className="text-gray-500 text-sm">
-                Last played on 12th July
+                Joined {new Date(user?.createdAt || "").toLocaleDateString()}
               </Text>
             </View>
           </View>
@@ -27,23 +29,25 @@ const ProfileDetailScreen: React.FC = () => {
           {/* 📊 Stats */}
           <View className="flex-row justify-between mt-4">
             <View className="items-center">
-              <Text className="text-xl font-bold">{user?.noOfGames || 0}</Text>
-              <Text className="text-gray-500 text-sm">GAMES</Text>
+              <Text className="text-xl font-bold">{user?.eventCount || 0}</Text>
+              <Text className="text-gray-500 text-sm">EVENTS</Text>
             </View>
             <View className="items-center">
               <Text className="text-xl font-bold">
-                {user?.playpals?.length || 0}
+                {user?.connections?.length || 0}
               </Text>
-              <Text className="text-gray-500 text-sm">PLAYPALS</Text>
+              <Text className="text-gray-500 text-sm">CONNECTIONS</Text>
             </View>
             <View className="items-center">
-              <Text className="text-xl font-bold">1.3k</Text>
-              <Text className="text-gray-500 text-sm">KARMA</Text>
+              <Text className="text-xl font-bold">
+                {user?.skill || "—"}
+              </Text>
+              <Text className="text-gray-500 text-sm">SKILL</Text>
             </View>
           </View>
         </View>
 
-        {/* 🔥 Weekly Goal Section */}
+        {/* 🎯 Weekly Goal */}
         <View className="bg-white mx-4 mt-4 rounded-2xl shadow p-4 flex-row items-center">
           <View className="bg-red-100 p-2 rounded-full">
             <Text className="text-red-500 text-lg">🔥</Text>
@@ -53,9 +57,11 @@ const ProfileDetailScreen: React.FC = () => {
               Set your Weekly Fit Goal 🎯
             </Text>
             <Text className="text-gray-500 text-sm">
-              You can now set your goal and keep yourself fit!
+              Stay consistent by setting a weekly activity goal.
             </Text>
-            <Text className="text-green-600 mt-1 font-semibold">Set Now</Text>
+            <TouchableOpacity>
+              <Text className="text-green-600 mt-1 font-semibold">Set Now</Text>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -77,25 +83,27 @@ const ProfileDetailScreen: React.FC = () => {
         <View className="bg-white mx-4 mt-4 rounded-2xl shadow p-4">
           <View className="flex-row justify-between mb-4">
             <Text className="font-semibold text-base">Reputation Badges</Text>
-            <Text className="text-green-600">See All</Text>
+            <TouchableOpacity>
+              <Text className="text-green-600">See All</Text>
+            </TouchableOpacity>
           </View>
           <View className="flex-row flex-wrap justify-between">
-            <View className="bg-gray-50 p-3 rounded-lg shadow-sm mb-4 w-[48%] items-center">
-              <View className="bg-blue-100 p-4 rounded-full mb-2">
-                <Text className="text-blue-600 text-xl">⏰</Text>
+            {(user?.badges || [
+              { icon: "⏰", label: "Punctual", count: 10 },
+              { icon: "👥", label: "Team Player", count: 15 },
+            ]).map((badge, i) => (
+              <View
+                key={i}
+                className="bg-gray-50 p-3 rounded-lg shadow-sm mb-4 w-[48%] items-center"
+              >
+                <View className="bg-blue-100 p-4 rounded-full mb-2">
+                  <Text className="text-blue-600 text-xl">{badge.icon}</Text>
+                </View>
+                <Text className="text-center font-medium text-gray-800">
+                  {badge.label} ({badge.count})
+                </Text>
               </View>
-              <Text className="text-center font-medium text-gray-800">
-                Punctual (46)
-              </Text>
-            </View>
-            <View className="bg-gray-50 p-3 rounded-lg shadow-sm mb-4 w-[48%] items-center">
-              <View className="bg-blue-100 p-4 rounded-full mb-2">
-                <Text className="text-blue-600 text-xl">👥</Text>
-              </View>
-              <Text className="text-center font-medium text-gray-800">
-                Team Player (47)
-              </Text>
-            </View>
+            ))}
           </View>
         </View>
 
@@ -105,30 +113,21 @@ const ProfileDetailScreen: React.FC = () => {
             <Text className="font-semibold text-base text-gray-800">
               Leaderboard
             </Text>
-            <Text className="text-green-600">View Leaderboard</Text>
+            <TouchableOpacity>
+              <Text className="text-green-600">View Leaderboard</Text>
+            </TouchableOpacity>
           </View>
+          {/* Replace with API-driven leaderboard */}
           <View className="space-y-2">
             <View className="flex-row justify-between items-center border-b border-gray-200 pb-2">
               <Text className="text-gray-700 font-medium">🏸 Badminton</Text>
-              <Text className="text-gray-700">260 Games</Text>
+              <Text className="text-gray-900 font-semibold">#12</Text>
             </View>
             <View className="flex-row justify-between items-center border-b border-gray-200 pb-2">
-              <Text className="text-gray-700 font-medium">🏏 Cricket</Text>
-              <Text className="text-gray-700">2 Games</Text>
+              <Text className="text-gray-700 font-medium">⚽ Football</Text>
+              <Text className="text-gray-900 font-semibold">#7</Text>
             </View>
           </View>
-        </View>
-
-        {/* 📌 Footer */}
-        <View className="bg-white mx-4 mt-4 rounded-2xl shadow p-4 mb-8">
-          <Text className="text-center text-gray-600 text-sm">
-            Stay updated with your play stats and connect with your playpals!
-          </Text>
-          <TouchableOpacity className="mt-3 bg-green-600 py-2 rounded-lg">
-            <Text className="text-white text-center font-semibold">
-              Check Updates
-            </Text>
-          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
